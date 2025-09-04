@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mercyhurst Lacrosse KNN Points Predictor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mercyhurst KNN Points Predictor</h1>
+
+      <div class="controls">
+        <label>Season
+          <select id="seasonSelect"></select>
+        </label>
+
+        <label>Expected Games (GP)
+          <input id="inputGP" type="number" min="0" value="15" />
+        </label>
+
+        <label>Expected Shots (SH)
+          <input id="inputSH" type="number" min="0" value="50" />
+        </label>
+
+        <label>k
+          <select id="kSelect">
+            <option>1</option>
+            <option selected>3</option>
+            <option>5</option>
+            <option>7</option>
+            <option>9</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="plotArea"></div>
+
+      <p class="note">Hover points to see player info. The red point is the predicted player (hover shows shots and goals — see notes below).</p>
+      <p class="small">Note: the CSV does not include a separate 'goals' column; the app predicts Points (PTS). For the red prediction hover it will show the predicted PTS as 'goals' per your request.</p>
+    </div>
+
+    <div id="tooltip" class="tooltip" style="display:none;"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
