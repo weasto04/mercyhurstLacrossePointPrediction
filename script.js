@@ -45,6 +45,19 @@ function initUI(){
   inputGP.addEventListener('input', render);
   inputSH.addEventListener('input', render);
   kSelect.addEventListener('change', render);
+
+  // prevent number inputs from changing via mouse wheel or arrow keys so user types value
+  [inputGP, inputSH].forEach(inp=>{
+    inp.addEventListener('wheel', e=>{
+      // if the input is focused, prevent wheel from changing value
+      if(document.activeElement === inp) e.preventDefault();
+    }, {passive:false});
+
+    inp.addEventListener('keydown', e=>{
+      // block arrow up/down from changing value
+      if(e.key === 'ArrowUp' || e.key === 'ArrowDown') e.preventDefault();
+    });
+  });
 }
 
 function scale(v, domainMin, domainMax, rangeMin, rangeMax){
